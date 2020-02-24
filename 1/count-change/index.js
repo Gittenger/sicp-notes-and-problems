@@ -21,16 +21,21 @@ function CC(amount, n = 5) {
     }
   }
 
+  //for edge cases
   if (amount == 0) return 1;
   else if (amount < 0 || n == 0) return 0;
+  //recursive tree
+  //include highest coin val or don't include it
+  //if included, return recursed func called with value less than that coin
+  //if not included, reduce n by one and recurse
   else return CC(amount, n - 1) + CC(amount - firstDenom(n), n);
 }
 
 function countChange(amount) {
-  return CC(amount, 5);
+  return CC(amount, 2);
 }
 
-const r = countChange(100);
+const r = countChange(5);
 console.log(r);
 
 module.exports = countChange;
